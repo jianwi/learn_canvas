@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线条</title>
+</head>
+<body>
+<canvas width="500" height="800"></canvas>
+<script>
+    let cav = document.getElementsByTagName("canvas")[0]
+    let ctx = cav.getContext("2d")
+    ctx.moveTo(10,10)
+//   线条操作属性
+    // lineWidth
+    ctx.lineWidth = 30
+    ctx.lineTo(100,10)
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.lineWidth = 10
+    ctx.moveTo(10,50)
+    ctx.lineTo(100,50)
+    ctx.stroke()
+
+    ctx.beginPath()
+    // 线帽样式 butt 默认值
+    // 圆形
+    ctx.lineCap = "round"
+    ctx.lineWidth = 20
+    ctx.moveTo(10,100)
+    ctx.lineTo(200,100)
+    ctx.stroke()
+
+    ctx.beginPath()
+    // 方型
+    ctx.lineCap = "square"
+    ctx.moveTo(10,200)
+    ctx.lineTo(90,300)
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.lineCap = "butt"
+    ctx.moveTo(90,220)
+    ctx.lineTo(250,301)
+    ctx.stroke()
+
+//    z 线帽只会在端点起作用
+    ctx.beginPath()
+    ctx.moveTo(200,400)
+    ctx.lineCap = "round"
+    ctx.lineTo(400,400)
+    ctx.lineTo(200,500)
+    ctx.lineTo(400,500)
+    ctx.stroke()
+
+//    lineJoin 两个线条交接处的样式 miter 默认尖角 round  bevel 斜角
+    ctx.beginPath()
+    // round
+    ctx.lineJoin = "round"
+    ctx.moveTo(300,100)
+    ctx.strokeStyle = "blue"
+    ctx.lineTo(400,150)
+    ctx.lineTo(300,170)
+    ctx.stroke()
+
+//    斜角
+    ctx.beginPath()
+    ctx.lineJoin = "bevel"
+    ctx.moveTo(100,120)
+    ctx.lineTo(190,200)
+    ctx.lineTo(120,220)
+    ctx.stroke()
+
+//    setLineDash
+    ctx.beginPath()
+    ctx.lineWidth = 3
+    ctx.setLineDash([30,9,25,22,31,1,10,2,9,3])
+    ctx.moveTo(300,200)
+    ctx.lineTo(800,500)
+    ctx.stroke()
+</script>
+</body>
+</html>
