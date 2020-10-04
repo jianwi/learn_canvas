@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本图形练习</title>
+    <style>
+        canvas{
+            display: block;
+            margin: auto;
+            width: 600px;
+            outline: solid red;
+        }
+    </style>
+</head>
+<body>
+<!--
+canvas 在上下文环境中是以标签上的 width 和 height 属性为准的，至于实际的显示，按照css的样式进行了缩放。
+-->
+    <canvas width="500" height="500"></canvas>
+    <script>
+        let cav = document.getElementsByTagName("canvas")[0]
+        let ctx = cav.getContext("2d")
+        ctx.strokeRect(0,0,cav.width,cav.height)
+        ctx.strokeStyle="red"
+        // 圆 用弧度来表示  1度 = ··
+        ctx.arc(100,210,80,0,180/(180/Math.PI))
+        ctx.stroke()
+        ctx.closePath()
+        ctx.moveTo(200,400)
+        let x = 10
+
+        let a = setInterval(function (){
+            ctx.lineTo(12,++x)
+            ctx.stroke()
+            if (x>150){
+                clearInterval(a)
+            }
+        },30)
+
+        ctx.clearRect(0,0,cav.width,cav.height)
+
+    </script>
+</body>
+</html>
