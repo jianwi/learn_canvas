@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas 操作文本</title>
+</head>
+<body>
+    <canvas width="500" height="800" style="border:solid 1px"></canvas>
+    <script>
+        let cav = document.querySelector("canvas")
+        let ctx = cav.getContext("2d")
+
+    //    strokeText
+    //    context.font的用法与CSS中的font属性用法是一样的。
+    //    ctx.font = "font-style font-weight font-size/line-height font-family"
+        ctx.font = "bold 30px 微软雅黑"
+        ctx.strokeText("文字一",100,100,50)
+        ctx.fillText("文字二",100,150,80)
+
+    //    meaureText 测出字的大小
+        let text = "文字三"
+        let data = ctx.measureText("文字三")
+        console.log(data.width)
+    //    meassure 实现文字居中
+        ctx.fillText(text,(cav.width-data.width)/2,300)
+
+    // textAlign 属性
+        ctx.textAlign = "start"
+        ctx.fillText("文本在指定的横坐标开始",100,350)
+        ctx.textAlign = "right"
+        ctx.fillText("文字右对齐",100,380)
+
+    // textBaseline
+        ctx.textBaseline = "top"
+        ctx.fillText("top 汉字",100,500,100)
+        ctx.textBaseline = "bottom"
+        ctx.fillText("bottom 汉字",200,500,100)
+        ctx.textBaseline = "middle"
+        ctx.fillText("middle 汉字",300,500,100)
+        ctx.textBaseline = "alphabetic"
+        ctx.fillText("alphabetic",500,500)
+    </script>
+</body>
+</html>
