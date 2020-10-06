@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片操作</title>
+</head>
+<body>
+    <canvas width="400" height="800"></canvas>
+    <script>
+        let cav = document.querySelector("canvas")
+        let ctx = cav.getContext("2d")
+
+        let img1 = new Image()
+        img1.src = "./assets/i (1).jpg"
+        img1.onload = function (){
+            ctx.drawImage(this,0,0)
+            // 带长度宽度
+            ctx.drawImage(this,100,100,50,50)
+            // 带裁剪功能 source_x,y ,裁剪的width,height，放置的位置 target_x, y, 目标宽高 target_width ,target_height
+            ctx.drawImage(this,200,100,200,200,200,300,150,50)
+        }
+
+        img2 = new Image()
+        img2.src = "./assets/i (2).jpg"
+        img2.onload = function () {
+            let pattern = ctx.createPattern(this,"repeat-y")
+            ctx.fillStyle = pattern
+            ctx.fillRect(0,0,200,800)
+            pattern = ctx.createPattern(this,"repeat-x")
+            ctx.fillStyle = pattern
+            ctx.fillRect(130,10,300,100)
+
+            //    使用 canvas 平铺
+            let bgCav = document.createElement("canvas")
+            bgCav.width = 20
+            bgCav.height = 20
+            let bgctx = bgCav.getContext("2d")
+            bgctx.fillStyle = "yellow"
+            bgctx.arc(10,10,10,0,360*Math.PI/180)
+            bgctx.fill()
+            pattern = ctx.createPattern(bgCav,"repeat")
+            ctx.beginPath()
+            ctx.fillStyle = pattern
+            ctx.fillRect(100,100,300,300)
+        }
+
+
+
+    </script>
+</body>
+</html>
