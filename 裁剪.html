@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图形裁剪</title>
+</head>
+<body>
+    <canvas width="500" height="800"></canvas>
+    <script>
+        let cav = document.querySelector("canvas")
+        let ctx = cav.getContext("2d")
+
+        // 裁剪
+        // 先画个圆
+        ctx.arc(200,200,200,0,360*Math.PI/180)
+        ctx.stroke()
+        ctx.clip()
+
+        let img = new Image()
+        img.src = "./assets/i (1).jpg"
+        img.onload = function (){
+            ctx.drawImage(this,0,0)
+        }
+    </script>
+</body>
+</html>
