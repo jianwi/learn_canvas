@@ -13,9 +13,15 @@
         ctx.fillStyle = "red"
         // 绘制矩形
         ctx.rect(0,0,100,100)
+        // 所以，translate 是对坐标的修改。是改变了一个状态，这个状态对下面的操作起作用
         ctx.translate(100,100)
-        ctx.rect(0,0,100,100)
+        ctx.rect(0,0,50,50)
+        // 缩放，x缩放10，y缩放2
+        // 代表会将下面的操作进行缩放
+        ctx.scale(10,2)
+        ctx.fillRect(0,0,50,10)
         ctx.fill()
+
         let i = 100
         document.querySelector("#translate").addEventListener("click",function (){
             ctx.clearRect(0,0,cav.width,cav.height)
