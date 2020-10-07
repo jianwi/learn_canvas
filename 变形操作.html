@@ -5,15 +5,25 @@
     <title>变形操作</title>
 </head>
 <body>
-    <canvas width="600" height="800"></canvas>
+    <canvas width="600" height="500"></canvas>
+    <button id="translate">平移</button>
     <script>
         let cav = document.querySelector("canvas")
         let ctx = cav.getContext("2d")
-
+        ctx.fillStyle = "red"
         // 绘制矩形
-        ctx.rect(0,0,100,200)
-        ctx.translate(200,300)
+        ctx.rect(0,0,100,100)
+        ctx.translate(100,100)
+        ctx.rect(0,0,100,100)
         ctx.fill()
+        let i = 100
+        document.querySelector("#translate").addEventListener("click",function (){
+            ctx.clearRect(0,0,cav.width,cav.height)
+            i+=10
+            ctx.translate(i,i)
+            ctx.fillRect(0,0,100,100)
+        })
+
     </script>
 </body>
 </html>
