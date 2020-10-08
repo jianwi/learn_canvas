@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>像素操作</title>
+</head>
+<body>
+<canvas width="500" height="700"></canvas>
+<script>
+    let cav = document.querySelector("canvas")
+    let ctx = cav.getContext("2d")
+    ctx.fillStyle = "yellow"
+    ctx.fillRect(0,0,100,100)
+
+    // getImageDate 获取像素
+    let img_data = ctx.getImageData(0,0,80,50)
+    // ImageData{data:[],width:"",height:""}
+    console.log(img_data)
+    // 反转颜色
+    for (let i = 0;i<img_data.data.length;i+=4)
+    {
+    //     imageData.data 数据格式为 [r1,b1,g1,a1,r2,g2,b2,a2...]
+    //    反转颜色不需要处理 a, [r,g,b,a][3] === a
+        img_data.data[i] = 255 - img_data.data[i]
+        img_data.data[i+1] = 255 - img_data.data[i+1]
+        img_data.data[i+2] = 255 - img_data.data[i+2]
+    }
+
+//    处理完后再放进去
+    ctx.putImageData(img_data,200,20)
+</script>
+
+</body>
+</html>
