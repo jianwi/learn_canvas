@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阴影</title>
+</head>
+<body>
+<canvas width="300" height="500"></canvas>
+<script>
+    let cav = document.querySelector("canvas")
+    let ctx = cav.getContext("2d")
+
+    ctx.shadowOffsetX = 10
+    ctx.shadowOffsetY = 10
+    ctx.shadowColor = "yellow"
+    ctx.shadowBlur = 10
+    ctx.fillRect(100,100,100,100)
+    ctx.fillRect(260,100,100,100)
+
+</script>
+</body>
+</html>
