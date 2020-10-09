@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渐变</title>
+</head>
+<body>
+<canvas width="500" height="800"></canvas>
+<script>
+    let cav = document.querySelector("canvas")
+    let ctx = cav.getContext("2d")
+    cav.style.border = "solid 2px red"
+//    线性渐变
+    let gnt = ctx.createLinearGradient(0,0,100,100)
+    gnt.addColorStop(0,"orange")
+    gnt.addColorStop(0.5,"gold")
+    gnt.addColorStop(1,"white")
+
+    ctx.fillStyle = gnt
+    ctx.fillRect(0,10,100,100)
+
+    ctx.strokeStyle = gnt
+    ctx.lineWidth = 20
+    ctx.strokeRect(130,20,50,50)
+    ctx.translate(100,0)
+    ctx.fillText("好好学习，天天向上",100,10)
+
+    // 径向渐变
+    let gradiant = ctx.createRadialGradient(100,100,150,100,90,50)
+    gradiant.addColorStop(0,"red")
+    gradiant.addColorStop(0.3,"blue")
+    gradiant.addColorStop(0.6,"yellow")
+    gradiant.addColorStop(1,"green")
+
+    ctx.fillStyle = gradiant
+    ctx.fillRect(100,100,100,100)
+</script>
+</body>
+</html>
