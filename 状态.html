@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>状态</title>
+</head>
+<body>
+<canvas width="300" height="600"></canvas>
+<script>
+    let cav = document.querySelector("canvas")
+    let ctx = cav.getContext("2d")
+
+    ctx.save()
+    ctx.arc(100,100,100,0,360*Math.PI/180)
+    ctx.clip()
+    ctx.rect(0,0,200,200)
+    ctx.fill()
+    // restore 后，回到之前的状态 裁剪失效
+    ctx.restore()
+    // 开启一个新路径，后面的状态不再对之前的有影响
+    ctx.beginPath()
+    ctx.translate(50,200)
+    ctx.rect(0,0,200,200)
+    ctx.fill()
+</script>
+</body>
+</html>
