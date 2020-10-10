@@ -14,7 +14,7 @@
         let ctx = cav.getContext("2d")
 
         let img1 = new Image()
-        img1.src = "./assets/i (1).jpg"
+        img1.src = "../assets/i (1).jpg"
         img1.onload = function (){
             ctx.drawImage(this,0,0)
             // 带长度宽度
@@ -24,7 +24,7 @@
         }
 
         img2 = new Image()
-        img2.src = "./assets/i (2).jpg"
+        img2.src = "../assets/i (2).jpg"
         img2.onload = function () {
             let pattern = ctx.createPattern(this,"repeat-y")
             ctx.fillStyle = pattern
